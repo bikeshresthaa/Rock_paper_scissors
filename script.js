@@ -70,6 +70,7 @@ function playRound(){
     }
 
 }
+
 //function to play a whole game(5 rounds)
 function playGame(){
     for(let i = 0; i< 5; i++){
@@ -81,6 +82,8 @@ function playGame(){
 
     if(humanScore<computerScore){
         console.log("COMPUTER WINS!!!!!!!")
+    }else if(humanScore === computerScore){
+        console.log("Its a Draw!!!")
     }else{
         console.log("Congratulations!!\nYou Beat the Computer!");
     }
@@ -88,6 +91,7 @@ function playGame(){
     console.log(`Final Score: \nYour Score: ${humanScore}\nComputer Score: ${computerScore}`)
 }
 
+//Initialize the score variables
 let humanScore = 0;
 let computerScore = 0;
 playGame();
