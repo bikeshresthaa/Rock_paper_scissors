@@ -13,61 +13,71 @@ let results = document.querySelector("#results");
 
 buttons.addEventListener('click', (e) => {
     
-    let target = e.target;
-
-    switch(target.id){
-        case 'rock':
-            
-            if(getComputerChoice() === "paper"){
-                computerScore += 1;
-            }
-            else if(getComputerChoice() === "scissors"){
-                humanScore += 1;
-            }else{
-                draw += 1;
-            }
-
-            results.textContent = `Your Score: ${humanScore}\n
-                                    Computer Score: ${computerScore} \n
-                                    Draw: ${draw}`;
-            break;
-
-        case 'paper':
-            
-            if(getComputerChoice() === "scissors"){
-                computerScore += 1;
-            }
-            else if(getComputerChoice() === "rock"){
-                humanScore += 1;
-            }else{
-                draw += 1;
-            }
-
-            results.textContent = `Your Score: ${humanScore}\n
-                                    Computer Score: ${computerScore} \n
-                                    Draw: ${draw}`;
-            break;
-
+        let computerChoice = getComputerChoice();
+        let target = e.target;
+    
+        switch(target.id){
+            case 'rock':
+                
+                if(computerChoice === "paper"){
+                    computerScore += 1;
+                }
+                else if(computerChoice === "scissors"){
+                    humanScore += 1;
+                }else{
+                    draw += 1;
+                }
+                break;
+    
+            case 'paper':
+                
+                if(computerChoice === "scissors"){
+                    computerScore += 1;
+                }
+                else if(computerChoice === "rock"){
+                    humanScore += 1;
+                }else{
+                    draw += 1;
+                }
+                break;
+    
             case 'scissors':
-            
-            if(getComputerChoice() === "rock"){
-                computerScore += 1;
-            }
-            else if(getComputerChoice() === "paper"){
-                humanScore += 1;
+                
+                if(computerChoice === "rock"){
+                    computerScore += 1;
+                }
+                else if(computerChoice === "paper"){
+                    humanScore += 1;
+                }else{
+                    draw += 1;
+                }
+                break;
+        }
+
+        results.innerHTML = `Your Score: ${humanScore}<br>
+                                        Computer Score: ${computerScore} <br>
+                                        Draw: ${draw}<br>`;
+
+        if(humanScore === 5 || computerScore ===5){
+            if(humanScore > computerScore){
+                results.innerHTML += `YOU WIN!!!!`;
             }else{
-                draw += 1;
+                results.innerHTML += `COMPUTER WINSS!!!!`;                         
             }
 
-            results.textContent = `Your Score: ${humanScore}\n
-                                    Computer Score: ${computerScore} \n
-                                    Draw: ${draw}`;
-            break;
+            humanScore = 0;
+            computerScore = 0;
+            draw = 0;
+
+            setTimeout(() => {
+                results.innerHTML = '';
+            }, 1000);
+        }
 
 
 
 
-    }
+    
 })
 
 
